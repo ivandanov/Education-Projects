@@ -1,0 +1,22 @@
+﻿<div class="container">
+    <div class="well">
+        <form name="createCommitForm" class="form-horizontal">
+            <fieldset>
+                <legend>Create New Commit</legend>
+                <div class="form-group">
+                    <label for="sourceCode" class="col-lg-2 control-label">Source code</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" ng-model="commit.sourceCode" required="required" id="sourceCode"> </textarea>
+                    </div>
+                </div>
+                
+                <div class="pull-right">
+                    <button ng-click="vm.createCommit(commit)" class="btn btn-primary">
+                        Create
+                    </button>
+                    <a href="#/" class="btn btn-primary">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

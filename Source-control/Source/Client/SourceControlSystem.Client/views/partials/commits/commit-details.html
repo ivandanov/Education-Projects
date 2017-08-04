@@ -1,0 +1,23 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-3">Id</div>
+        <div class="col-md-5">{{vm.commit.Id}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">Name</div>
+        <div class="col-md-5">{{vm.commit.UserName}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">Created On</div>
+        <div class="col-md-5">{{vm.commit.CreatedOn | beautifulDate}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">Project Name</div>
+        <div class="col-md-5">{{vm.commit.ProjectName}}</div>
+    </div>
+        
+    <div class="row">
+        <div class="col-md-3">Source Code</div>
+        <div class="col-md-5">{{vm.commit.SourceCode}}</div>
+    </div>
+</div>

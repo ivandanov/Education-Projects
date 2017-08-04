@@ -1,0 +1,98 @@
+﻿<div class="container">
+    <h1 class="text-center">
+        <a href="#/projects/{{vm.project.Id}}/addcommits" ng-show="vm.identity.isAuthenticated()" class="btn btn-sm btn-primary pull-right">Create commit</a>
+    </h1>
+    <div project-details />
+    <div class="row">&nbsp;</div>
+    <div class="row table-bordered" ng-show="vm.identity.isAuthenticated()">
+        <div class="col-md-4">
+            <div class="col-md-7">
+                <div class="form-group">
+                    <div class="text-center">
+                        <label for="from-city" class="control-label">By User</label>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" ng-init="vm.request.ByUser=''" ng-model="vm.request.ByUser" id="ByUser">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <button class="btn btn-primary pull-right" ng-click="vm.filterCommits()">Filter</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-6">
+                Item on one page:
+            </div>
+            <div class="col-md-6">
+                <input type="number" ng-model="vm.request.PageSize" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-3">
+                <button class="btn btn-primary" ng-click="vm.prevPage()">&lt;&lt;</button>
+            </div>
+            <div class="col-md-6">
+                <input type="number" ng-model="vm.request.Page" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" ng-click="vm.nextPage()">&gt;&gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row table-bordered" >
+        <div class="col-md-3"><h4>Local filter:</h4></div>
+        <div class="form-group col-md-3">
+            <label for="FromDate" class="col-md-2 control-label">From Date</label>
+            <div class="col-md-10">
+                <input id="FromDate" kendo-datetimepicker k-format="'yyyy-MM-dd HH:mm:ss'" placeholder="From Date" ng-model="vm.request.FromDate" class="form-control full-width" />
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="ToDate" class="col-md-2 control-label">To Date</label>
+            <div class="col-md-10">
+                <input id="ToDate" kendo-datetimepicker k-format="'yyyy-MM-dd HH:mm:ss'" placeholder="To Date" ng-model="vm.request.ToDate" class="form-control full-width" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary pull-right" ng-click="vm.filterCommitsLocal()">Filter local</button>
+        </div>
+    </div>
+
+    <div class="row table-bordered" ng-show="vm.showAddingControl" >
+        <div class="col-md-3"> Collaborator name:</div>
+        <div class="col-md-5">
+            <div class="col-md-6">
+                <input type="text" ng-model="vm.newColaborator" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary" ng-click="vm.addColaborator()">Add colaborator</button>
+        </div>
+    </div>
+    <div ng-show="vm.commits && vm.commits.length > 0">
+        <div all-commits />
+    </div>
+    <div ng-hide="vm.commits && vm.commits.length > 0">
+        <h2 class="text-center">No Commits for this project!</h2>
+    </div>
+    <div class="text-center" ng-show="vm.colaborators && vm.colaborators.length > 0">
+        <h2 class="jumbotron">Colaborators:</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th class="text-center">
+                    Colaborator Name
+                </th>
+            </tr>
+            <tr ng-repeat="colaborator in vm.colaborators">
+                <td class="text-center">
+                    {{colaborator}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div ng-hide="vm.colaborators && vm.colaborators.length > 0">
+        <h2 class="text-center">No Colaborators for this project!</h2>
+    </div>
+</div>
